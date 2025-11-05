@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>document</title>
+</head>
+<body id="body">
+  
+  <div style="padding:10px; text-align:right; background-color:#ddd;">
+    <button onclick="setLightMode()">Light Mode</button>
+    <button onclick="setDarkMode()">Dark Mode</button>
+  </div>
+
+  <h3>Tanggal dan Waktu Sekarang:</h3>
+
+  <p id="tanggal"></p>
+  <p id="jam"></p>
+
+  <script type="text/javascript">
+    
+    function tampilWaktu() {
+      var waktu = new Date();
+      var hari = waktu.getDate();
+      var bulan = waktu.getMonth() + 1;
+      var tahun = waktu.getFullYear();
+      var jam = waktu.getHours();
+      var menit = waktu.getMinutes();
+      var detik = waktu.getSeconds();
+
+      if (jam < 10) jam = "0" + jam;
+      if (menit < 10) menit = "0" + menit;
+      if (detik < 10) detik = "0" + detik;
+      if (bulan < 10) bulan = "0" + bulan;
+
+      document.getElementById("tanggal").innerHTML =
+        "Tanggal: " + hari + "/" + bulan + "/" + tahun;
+      document.getElementById("jam").innerHTML =
+        "Jam: " + jam + ":" + menit + ":" + detik;
+
+      setTimeout(tampilWaktu, 1000);
+    }
+    tampilWaktu();
+
+   
+    function setLightMode() {
+      var body = document.getElementById("body");
+      body.style.backgroundColor = "white";
+      body.style.color = "black";
+    }
+
+    function setDarkMode() {
+      var body = document.getElementById("body");
+      body.style.backgroundColor = "#222";
+      body.style.color = "white";
+    }
+  </script>
+</body>
+</html>
